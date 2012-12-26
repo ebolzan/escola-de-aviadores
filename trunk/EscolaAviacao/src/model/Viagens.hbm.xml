@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/12/2012 17:12:10 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Viagens" table="viagens" schema="public">
+        <id name="codigo" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="avioes" class="model.Avioes" fetch="select">
+            <column name="codigo_avioes" not-null="true" />
+        </many-to-one>
+        <many-to-one name="clientes" class="model.Clientes" fetch="select">
+            <column name="codigo_clientes" not-null="true" />
+        </many-to-one>
+        <property name="dataSaida" type="date">
+            <column name="data_saida" length="13" not-null="true" />
+        </property>
+        <property name="dataChegada" type="date">
+            <column name="data_chegada" length="13" not-null="true" />
+        </property>
+        <property name="cidadeDe" type="string">
+            <column name="cidade_de" length="100" not-null="true" />
+        </property>
+        <property name="cidadeAte" type="string">
+            <column name="cidade_ate" length="100" not-null="true" />
+        </property>
+        <property name="valor" type="float">
+            <column name="valor" precision="8" scale="8" not-null="true" />
+        </property>
+        <set name="pilotoses" inverse="true" table="pilotosviagens">
+            <key>
+                <column name="codigo_viagens" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.Pilotos">
+                <column name="breve" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

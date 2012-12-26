@@ -1,0 +1,8 @@
+user postgresql: usersi
+password postgresql: sistemas
+
+svn
+
+url repositorio: https://escola-de-aviadores.googlecode.com/svn/trunk/
+user: ebolzan@inf.ufsm.br
+senha: rM7MN6Fy6Ue6

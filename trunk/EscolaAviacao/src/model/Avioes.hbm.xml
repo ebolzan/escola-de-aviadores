@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/12/2012 17:12:10 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Avioes" table="avioes" schema="public">
+        <id name="codigo" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="marca" type="string">
+            <column name="marca" length="50" not-null="true" />
+        </property>
+        <property name="dataManut" type="date">
+            <column name="data_manut" length="13" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" length="150" not-null="true" />
+        </property>
+        <property name="anoFab" type="date">
+            <column name="ano_fab" length="13" not-null="true" />
+        </property>
+        <set name="viagenses" inverse="true">
+            <key>
+                <column name="codigo_avioes" not-null="true" />
+            </key>
+            <one-to-many class="model.Viagens" />
+        </set>
+        <set name="aulases" inverse="true">
+            <key>
+                <column name="codigo_avioes" not-null="true" />
+            </key>
+            <one-to-many class="model.Aulas" />
+        </set>
+    </class>
+</hibernate-mapping>

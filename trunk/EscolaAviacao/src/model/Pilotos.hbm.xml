@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/12/2012 17:12:10 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Pilotos" table="pilotos" schema="public">
+        <id name="breve" type="int">
+            <column name="breve" />
+            <generator class="assigned" />
+        </id>
+        <property name="endereco" type="string">
+            <column name="endereco" length="100" not-null="true" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="cidade" length="50" not-null="true" />
+        </property>
+        <property name="nome" type="string">
+            <column name="nome" length="50" not-null="true" />
+        </property>
+        <set name="instrutoreses" inverse="true">
+            <key>
+                <column name="breve" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.Instrutores" />
+        </set>
+        <set name="viagenses" inverse="false" table="pilotosviagens">
+            <key>
+                <column name="breve" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.Viagens">
+                <column name="codigo_viagens" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="instrutorescursoses" inverse="true">
+            <key>
+                <column name="breve" not-null="true" />
+            </key>
+            <one-to-many class="model.Instrutorescursos" />
+        </set>
+    </class>
+</hibernate-mapping>

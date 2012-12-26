@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/12/2012 17:12:10 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Instituicoes" table="instituicoes" schema="public">
+        <id name="codigo" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <property name="cidade" type="string">
+            <column name="cidade" length="100" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="100" not-null="true" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="telefone" length="50" />
+        </property>
+        <property name="nome" type="string">
+            <column name="nome" length="50" not-null="true" />
+        </property>
+        <set name="cursoses" inverse="false" table="cursosinstituicoes">
+            <key>
+                <column name="codigo_instituicoes" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.Cursos">
+                <column name="codigo_cursos" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
