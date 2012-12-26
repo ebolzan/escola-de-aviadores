@@ -1,0 +1,8 @@
+Instruções:
+
+1 - faça chekout do código para seu netbeans
+2 - execute o sql que está no arquivo .sql deste projeto no banco de dados
+3 -  no arquivo hibernate.cfg.xml configure o user e password do seu postgre.
+4 - programa pronto para rodar.
+5 - O mapeamento já foi criado, tem um exemplo como faz a inserção funcionando;
+
