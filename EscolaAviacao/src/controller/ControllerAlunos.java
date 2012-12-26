@@ -13,7 +13,7 @@ import view.JFrameCadAlunos;
 
 /**
  *
- * @author evandro
+ * @author evandro, gabriel, luiz felipe, adriano
  */
 public class ControllerAlunos {
     
