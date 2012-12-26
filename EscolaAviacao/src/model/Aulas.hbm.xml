@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/12/2012 17:12:10 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Aulas" table="aulas" schema="public">
+        <id name="codigo" type="int">
+            <column name="codigo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="avioes" class="model.Avioes" fetch="select">
+            <column name="codigo_avioes" not-null="true" />
+        </many-to-one>
+        <many-to-one name="alunos" class="model.Alunos" fetch="select">
+            <column name="matricula" not-null="true" />
+        </many-to-one>
+        <many-to-one name="instrutores" class="model.Instrutores" fetch="select">
+            <column name="breve" not-null="true" />
+        </many-to-one>
+        <property name="data" type="date">
+            <column name="data" length="13" not-null="true" />
+        </property>
+        <property name="horaSaida" type="time">
+            <column name="hora_saida" length="15" not-null="true" />
+        </property>
+        <property name="horaChegada" type="time">
+            <column name="hora_chegada" length="15" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

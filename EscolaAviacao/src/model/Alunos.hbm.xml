@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/12/2012 17:12:10 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Alunos" table="alunos" schema="public">
+        <id name="matricula" type="int">
+            <column name="matricula" />
+            <generator class="assigned" />
+        </id>
+        <property name="endereco" type="string">
+            <column name="endereco" length="100" not-null="true" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="telefone" length="50" not-null="true" />
+        </property>
+        <property name="tipoSangue" type="string">
+            <column name="tipo_sangue" length="50" />
+        </property>
+        <property name="nome" type="string">
+            <column name="nome" length="50" not-null="true" />
+        </property>
+        <set name="aulases" inverse="true">
+            <key>
+                <column name="matricula" not-null="true" />
+            </key>
+            <one-to-many class="model.Aulas" />
+        </set>
+    </class>
+</hibernate-mapping>

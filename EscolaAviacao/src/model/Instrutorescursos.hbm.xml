@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/12/2012 17:12:10 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Instrutorescursos" table="instrutorescursos" schema="public">
+        <composite-id name="id" class="model.InstrutorescursosId">
+            <key-property name="dataDiploma" type="date">
+                <column name="data_diploma" length="13" />
+            </key-property>
+            <key-property name="codigoCurso" type="int">
+                <column name="codigo_curso" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="cursos" class="model.Cursos" update="false" insert="false" fetch="select">
+            <column name="codigo_curso" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pilotos" class="model.Pilotos" fetch="select">
+            <column name="breve" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

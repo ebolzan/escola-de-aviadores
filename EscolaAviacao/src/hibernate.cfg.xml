@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/escola_aviadores</property>
+    <property name="hibernate.connection.username">usersi</property>
+    <property name="hibernate.connection.password">sistemas</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="model/Clientes.hbm.xml"/>
+    <mapping resource="model/Instrutores.hbm.xml"/>
+    <mapping resource="model/Avioes.hbm.xml"/>
+    <mapping resource="model/Instituicoes.hbm.xml"/>
+    <mapping resource="model/Instrutorescursos.hbm.xml"/>
+    <mapping resource="model/Viagens.hbm.xml"/>
+    <mapping resource="model/Cursos.hbm.xml"/>
+    <mapping resource="model/Alunos.hbm.xml"/>
+    <mapping resource="model/Pilotos.hbm.xml"/>
+    <mapping resource="model/Aulas.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
