@@ -11,6 +11,7 @@ import model.Alunos;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
 import view.JFrameCadAlunos;
+import view.JFramePrincipal;
 
 /**
  *
@@ -18,14 +19,10 @@ import view.JFrameCadAlunos;
  */
 public class EscolaAviacao {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-        JFrameCadAlunos  frame = new JFrameCadAlunos();
-        frame.setVisible(true);
+
+        new JFramePrincipal().setVisible(true); 
         
 //        Alunos a1 = new Alunos(1220, "Santa maria", "2323 - 2323", "Evandro BOlzan");
 //        a1.setTipoSangue("A+");
