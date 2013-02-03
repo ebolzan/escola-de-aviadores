@@ -32,6 +32,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -60,7 +61,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Consultas");
+        jMenu3.setText("Relatórios");
+
+        jMenuItem3.setText("Todos os Alunos");
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Sobre");
@@ -100,5 +105,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
