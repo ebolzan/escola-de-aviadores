@@ -4,6 +4,14 @@
  */
 package view;
 
+import Reports.Conexao;
+import Reports.ReportUtils;
+import java.io.InputStream;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
+
 /**
  *
  * @author Gabriel Lunardi
@@ -38,7 +46,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema gerenciador de Aeroclubes - T2 PGBDADOS 2013/1");
+        setTitle("Sistema gerenciador de Aeroclubes AEGL - T2 PGBDADOS 2013/1");
         setResizable(false);
 
         jMenu2.setText("Cadastros");
@@ -64,6 +72,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu3.setText("Relatórios");
 
         jMenuItem3.setText("Todos os Alunos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -77,7 +90,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addGap(0, 531, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,6 +109,16 @@ public class JFramePrincipal extends javax.swing.JFrame {
         JFrameCadAvioes cadAvioes = new JFrameCadAvioes();
         cadAvioes.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        InputStream inputStream = getClass().getResourceAsStream( "/TodosAlunos.jasper" );
+        Map parametros = new HashMap();
+        try {
+            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
+        } catch (JRException er){
+            er.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
