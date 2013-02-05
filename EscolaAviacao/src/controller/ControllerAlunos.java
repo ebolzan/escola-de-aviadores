@@ -7,6 +7,7 @@ package controller;
 import Util.HibernateUtil;
 import javax.swing.JOptionPane;
 import model.Alunos;
+import model.TableModelAlunos;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
 import view.JFrameCadAlunos;
@@ -18,24 +19,20 @@ import view.JFrameCadAlunos;
 public class ControllerAlunos {
     
     private JFrameCadAlunos viewAlunos;
+    private TableModelAlunos viewTabela;
     private Alunos alunos;
     
-    public ControllerAlunos(JFrameCadAlunos viewAlunos)
-    {
+    public ControllerAlunos(JFrameCadAlunos viewAlunos, TableModelAlunos t) {
         this.viewAlunos = viewAlunos;        
+        viewTabela = t;
     }
     
-    public void save()
-    {
-        Alunos alunos = newFromView();
+    public void save() {
         
-        if(alunos == null)
-        {
+        Alunos alunos = newFromView();
+        if(alunos == null) {
             return;            
-        }
-        else
-        {
-            //tdo 
+        } else {
             System.out.println("endereco "+alunos.getEndereco());
             System.out.println("nome "+alunos.getNome());
             System.out.println("matricula "+alunos.getMatricula());
@@ -44,19 +41,18 @@ public class ControllerAlunos {
             
             Session s = HibernateUtil.getSessionFactory().getCurrentSession();              
         
-            try 
-            {
+            try {
                 s.beginTransaction();
                 s.save(alunos);
                 s.getTransaction().commit();
-            }
-            catch(HibernateException e)
-            {
+                viewTabela.add(alunos); //tem que mudar isso pra um select
+            } catch(HibernateException e) {
                 System.out.print(e.getMessage());
                 viewAlunos.showError("deu algum erro, verifique a saída da excessão, programador"); 
                 //depois de pronto, arrumar essas mensagens, pois podem não ser somente de chave duplicada .. 
             }            
-        }        
+        }  
+        
     }   
         
     //get all values form viewalunos
@@ -91,7 +87,13 @@ public class ControllerAlunos {
         
     }
 
+    
+    //getters and setters
     public void setViewAlunos(JFrameCadAlunos viewAlunos) {
         this.viewAlunos = viewAlunos;
+    }
+    
+    public TableModelAlunos getViewTabela() {
+        return viewTabela;
     }
 }
