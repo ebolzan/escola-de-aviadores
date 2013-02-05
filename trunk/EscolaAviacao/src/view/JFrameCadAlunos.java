@@ -300,6 +300,10 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         ca.removeOne();
+        ca.clearFields();
+        jButtonEditar.setEnabled(false);
+        jButtonExcluir.setEnabled(false);
+        jButtonInserir.setEnabled(true);
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
