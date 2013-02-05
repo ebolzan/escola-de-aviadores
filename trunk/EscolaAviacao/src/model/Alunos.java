@@ -22,10 +22,11 @@ public class Alunos  implements java.io.Serializable {
     }
 
 	
-    public Alunos(int matricula, String endereco, String telefone, String nome) {
+    public Alunos(int matricula, String endereco, String telefone, String tipoSangue, String nome) {
         this.matricula = matricula;
         this.endereco = endereco;
         this.telefone = telefone;
+        this.tipoSangue = tipoSangue;
         this.nome = nome;
     }
     public Alunos(int matricula, String endereco, String telefone, String tipoSangue, String nome, Set aulases) {
