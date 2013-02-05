@@ -5,9 +5,11 @@
 package controller;
 
 import Util.HibernateUtil;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.Alunos;
 import model.TableModelAlunos;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
 import view.JFrameCadAlunos;
@@ -33,11 +35,7 @@ public class ControllerAlunos {
         if(alunos == null) {
             return;            
         } else {
-            System.out.println("endereco "+alunos.getEndereco());
-            System.out.println("nome "+alunos.getNome());
-            System.out.println("matricula "+alunos.getMatricula());
-            System.out.println("telefone "+alunos.getTelefone());
-            System.out.println("sangue "+alunos.getTipoSangue());
+            alunos.toString();
             
             Session s = HibernateUtil.getSessionFactory().getCurrentSession();              
         
@@ -53,7 +51,27 @@ public class ControllerAlunos {
             }            
         }  
         
-    }   
+    }  
+    
+    public void selectAll() {
+    
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        viewTabela.getLinesJTable().clear();
+        try {
+            s.beginTransaction();
+            Criteria c = s.createCriteria(Alunos.class);
+            List<Alunos> alist = c.list();
+            System.out.println(alist.size());
+            for (Alunos a : alist){
+                System.out.println(a.toString());
+                viewTabela.add(a);
+            }
+        } catch (HibernateException e){
+            e.printStackTrace();
+        }
+        
+    }
+
         
     //get all values form viewalunos
     private Alunos newFromView() {
