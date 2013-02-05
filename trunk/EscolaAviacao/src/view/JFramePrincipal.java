@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import model.TableModelAlunos;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -20,10 +21,12 @@ import net.sf.jasperreports.engine.JRException;
 public class JFramePrincipal extends javax.swing.JFrame {
 
     private ControllerAlunos alunoControle;
+    private TableModelAlunos viewTabelaAluno;
     
     public JFramePrincipal() {
         initComponents();
-        alunoControle = new ControllerAlunos(null);
+        viewTabelaAluno = new TableModelAlunos();
+        alunoControle = new ControllerAlunos(null,viewTabelaAluno);
     }
 
     /**
