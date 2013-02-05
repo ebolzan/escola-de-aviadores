@@ -83,6 +83,15 @@ public class Alunos  implements java.io.Serializable {
 
 
 
+    @Override
+    public String toString(){
+        return "Matricula: " + matricula + "\n" +
+               "Nome: " + nome + "\n" + 
+               "Endereço: " + endereco + "\n" +
+               "Telefone: " + telefone + "\n" +
+               "Sangue: " + tipoSangue + "\n";
+    }
+
 
 }
 

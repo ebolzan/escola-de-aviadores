@@ -10,35 +10,36 @@ package model;
  */
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class TableModelAlunos extends AbstractTableModel {
 
     private static final String[] columnNames = {"Matricula", "Nome", "Endereço", "Telefone", "Sangue"};
-    private ArrayList<Alunos> lines;
+    private List<Alunos> linesJTable; //como list eh uma interface, fica mais facil de usar polimorfismo 
     
     public TableModelAlunos(){
-        lines = new ArrayList<Alunos>();
+        linesJTable = new ArrayList<Alunos>(); //arrayList implementa essa interface
     }
     
-public void remove(int index) {
-	lines.remove(index);
+    public void remove(int index) {
+	linesJTable.remove(index);
 	fireTableRowsDeleted(index, index);
     }
 
     public Alunos select(int index) {
-        return lines.get(index);
+        return linesJTable.get(index);
     }
     
     public void add(Alunos a) {
         // Adds the element in the last position in the list
-        lines.add(a);
+        linesJTable.add(a);
         System.out.print("testando, entrou no add da tableModelAluno");
-        fireTableRowsInserted(lines.size()-1, lines.size()-1);
+        fireTableRowsInserted(linesJTable.size()-1, linesJTable.size()-1);
     }
 
     public void update(int index, Alunos a) {
-        lines.set(index, a);
+        linesJTable.set(index, a);
         fireTableRowsUpdated(index, index);
     }
     
@@ -54,19 +55,24 @@ public void remove(int index) {
 
     @Override
     public int getRowCount() {
-        return lines.size();
+        return linesJTable.size();
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex) {
-            case 0: return lines.get(rowIndex).getMatricula();
-            case 1: return lines.get(rowIndex).getNome();
-            case 2: return lines.get(rowIndex).getEndereco();
-            case 3: return lines.get(rowIndex).getTelefone();
-            case 4: return lines.get(rowIndex).getTipoSangue();   
+            case 0: return linesJTable.get(rowIndex).getMatricula();
+            case 1: return linesJTable.get(rowIndex).getNome();
+            case 2: return linesJTable.get(rowIndex).getEndereco();
+            case 3: return linesJTable.get(rowIndex).getTelefone();
+            case 4: return linesJTable.get(rowIndex).getTipoSangue();   
         }
         return null;
+    }
+    
+    //getters and setters
+    public List<Alunos> getLinesJTable() {
+        return linesJTable;
     }
     
 }
