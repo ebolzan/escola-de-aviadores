@@ -35,7 +35,7 @@ public class ControllerAlunos {
         if(alunos == null) {
             return;            
         } else {
-            alunos.toString();
+           // alunos.toString();
             
             Session s = HibernateUtil.getSessionFactory().getCurrentSession();              
         
@@ -57,19 +57,38 @@ public class ControllerAlunos {
     
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
         viewTabela.getLinesJTable().clear();
+        
         try {
             s.beginTransaction();
             Criteria c = s.createCriteria(Alunos.class);
             List<Alunos> alist = c.list();
-            System.out.println(alist.size());
             for (Alunos a : alist){
-                System.out.println(a.toString());
                 viewTabela.add(a);
             }
         } catch (HibernateException e){
             e.printStackTrace();
+            JOptionPane.showMessageDialog(viewAlunos, "Erro ao extrair dados do Banco de Dados: " + e.getMessage());
         }
         
+    }
+
+    public void removeOne() {
+       
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        int index = viewAlunos.getjTable1().getSelectedRow();
+        if (index == -1)
+            return;
+        Alunos a = viewTabela.select(index);
+        System.out.println(a.toString());
+        try {
+            s.beginTransaction();
+            s.delete(a);
+            s.getTransaction().commit();
+            viewTabela.remove(index);
+        } catch (HibernateException e){
+            e.printStackTrace();
+        }
+
     }
     
     public void selectOne() {
@@ -83,12 +102,6 @@ public class ControllerAlunos {
         viewAlunos.getInputTipoSanguineo().setText(a.getTipoSangue());
         viewAlunos.getInputTelefone().setText(a.getTelefone());
         viewAlunos.getInputNome().setText(a.getNome());
-        
-    }
-    
-    public void removeOne() {
-       
-        
         
     }
 

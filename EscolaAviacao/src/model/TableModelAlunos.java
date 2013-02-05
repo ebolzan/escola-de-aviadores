@@ -34,7 +34,6 @@ public class TableModelAlunos extends AbstractTableModel {
     public void add(Alunos a) {
         // Adds the element in the last position in the list
         linesJTable.add(a);
-        System.out.print("testando, entrou no add da tableModelAluno");
         fireTableRowsInserted(linesJTable.size()-1, linesJTable.size()-1);
     }
 
