@@ -318,7 +318,11 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jButton1.setEnabled(false);
         jButton4.setEnabled(true);
-        jButton2.setEnabled(true);    
+        jButton2.setEnabled(true);
+        if(evt.getClickCount()==2){  
+                 System.out.println("teste");  
+                }
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseExited
