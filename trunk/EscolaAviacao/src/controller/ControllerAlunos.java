@@ -6,6 +6,7 @@ package controller;
 
 import Util.HibernateUtil;
 import java.util.List;
+import java.util.Locale.Category;
 import javax.swing.JOptionPane;
 import model.Alunos;
 import model.TableModelAlunos;
@@ -46,7 +47,7 @@ public class ControllerAlunos {
                 viewTabela.add(alunos); //tem que mudar isso pra um select
             } catch(HibernateException e) {
                 System.out.print(e.getMessage());
-                viewAlunos.showError("deu algum erro, verifique a saída da excessão, programador"); 
+                viewAlunos.showError("Já existe um registro com essa matrícula no banco de dados"); 
                 //depois de pronto, arrumar essas mensagens, pois podem não ser somente de chave duplicada .. 
             }            
         }  
@@ -79,7 +80,6 @@ public class ControllerAlunos {
         if (index == -1)
             return;
         Alunos a = viewTabela.select(index);
-        System.out.println(a.toString());
         try {
             s.beginTransaction();
             s.delete(a);
@@ -87,8 +87,43 @@ public class ControllerAlunos {
             viewTabela.remove(index);
         } catch (HibernateException e){
             e.printStackTrace();
+            JOptionPane.showMessageDialog(viewAlunos, "Erro ao remover dados do Banco de Dados: " + e.getMessage());
         }
 
+    }
+    
+    public void edit() {
+    
+        boolean flag = true;
+        Alunos a = newFromView();
+        for (Alunos t : viewTabela.getLinesJTable()) {
+            if (a.equals(t)) {
+                flag = false;
+            } else {
+                flag = true;
+            }
+        }
+
+        if (flag){
+            Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+            int index = viewAlunos.getjTable1().getSelectedRow();
+            if (index == -1) {
+                return;
+            }
+
+            try {
+                s.beginTransaction();
+                s.merge(a);
+                viewTabela.update(index, a);
+            } catch (HibernateException e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(viewAlunos, "Erro ao atualizar dados no Banco de Dados: " + e.getMessage());
+            }
+        } else {
+            viewAlunos.showError("Não existem alterações a serem feitas!");
+        }
+        
+        
     }
     
     public void selectOne() {
@@ -147,6 +182,8 @@ public class ControllerAlunos {
     public TableModelAlunos getViewTabela() {
         return viewTabela;
     }
+
+
 
 
 }
