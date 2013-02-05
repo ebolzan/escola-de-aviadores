@@ -94,36 +94,24 @@ public class ControllerAlunos {
     
     public void edit() {
     
-        boolean flag = true;
         Alunos a = newFromView();
-        for (Alunos t : viewTabela.getLinesJTable()) {
-            if (a.equals(t)) {
-                flag = false;
-            } else {
-                flag = true;
-            }
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        int index = viewAlunos.getjTable1().getSelectedRow();
+        if (index == -1) {
+            return;
         }
 
-        if (flag){
-            Session s = HibernateUtil.getSessionFactory().getCurrentSession();
-            int index = viewAlunos.getjTable1().getSelectedRow();
-            if (index == -1) {
-                return;
-            }
-
-            try {
-                s.beginTransaction();
-                s.merge(a);
-                viewTabela.update(index, a);
-            } catch (HibernateException e){
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(viewAlunos, "Erro ao atualizar dados no Banco de Dados: " + e.getMessage());
-            }
-        } else {
-            viewAlunos.showError("Não existem alterações a serem feitas!");
+        try {
+            s.beginTransaction();
+            s.merge(a);
+            viewTabela.update(index, a);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(viewAlunos, "Erro ao atualizar dados no Banco de Dados: " + e.getMessage());
         }
-        
-        
+
+
+
     }
     
     public void selectOne() {
