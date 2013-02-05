@@ -91,7 +91,7 @@ public class Alunos  implements java.io.Serializable {
                "Telefone: " + telefone + "\n" +
                "Sangue: " + tipoSangue + "\n";
     }
-
+    
 
 }
 
