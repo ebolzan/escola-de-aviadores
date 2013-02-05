@@ -24,21 +24,18 @@ public class EscolaAviacao {
 
         new JFramePrincipal().setVisible(true); 
         
-//        Alunos a1 = new Alunos(1220, "Santa maria", "2323 - 2323", "Evandro BOlzan");
-//        a1.setTipoSangue("A+");
-//        
-//        Session s = HibernateUtil.getSessionFactory().getCurrentSession();              
-//        
-//        try 
-//        {
-//            s.beginTransaction();
-//            s.save(a1);
-//            s.getTransaction().commit();
-//        }
-//        catch(HibernateException e)
-//        {
-//            System.out.print(e.getMessage());
-//            JOptionPane.showMessageDialog(null, e+"voce esta tentando inserir uma chave duplicada");
-//        }                                                
+/*        Alunos a1 = new Alunos(20135689, "Santa maria", "(55)9999-9999", "A+", "Evandro Bolzan");
+        
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();              
+        
+        try {
+            s.beginTransaction();
+            s.save(a1);
+            s.getTransaction().commit();
+        }
+        catch(HibernateException e) {
+            e.printStackTrace();
+        }   
+*/
     }
 }

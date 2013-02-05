@@ -20,10 +20,9 @@ public class ControllerAlunos {
     private JFrameCadAlunos viewAlunos;
     private Alunos alunos;
     
-    public ControllerAlunos(JFrameCadAlunos viewAlunos, Alunos alunos)
+    public ControllerAlunos(JFrameCadAlunos viewAlunos)
     {
         this.viewAlunos = viewAlunos;        
-        this.alunos = alunos;
     }
     
     public void save()
@@ -41,6 +40,7 @@ public class ControllerAlunos {
             System.out.println("nome "+alunos.getNome());
             System.out.println("matricula "+alunos.getMatricula());
             System.out.println("telefone "+alunos.getTelefone());
+            System.out.println("sangue "+alunos.getTipoSangue());
             
             Session s = HibernateUtil.getSessionFactory().getCurrentSession();              
         
@@ -53,43 +53,45 @@ public class ControllerAlunos {
             catch(HibernateException e)
             {
                 System.out.print(e.getMessage());
-                viewAlunos.showError("voce esta tentando inserir uma chave duplicada");
+                viewAlunos.showError("deu algum erro, verifique a saída da excessão, programador"); 
+                //depois de pronto, arrumar essas mensagens, pois podem não ser somente de chave duplicada .. 
             }            
         }        
     }   
         
     //get all values form viewalunos
-    private Alunos newFromView()
-    {
-        String registration, name, adress, phone, bloodtype; 
+    private Alunos newFromView() {
+        
+        String registration, name, address, phone, bloodtype; 
         registration = viewAlunos.getInputMatricula().getText();
         name = viewAlunos.getInputNome().getText();
-        adress = viewAlunos.getInputEndereco().getText();
+        address = viewAlunos.getInputEndereco().getText();
         phone = viewAlunos.getInputTelefone().getText();
         bloodtype = viewAlunos.getInputTipoSanguineo().getText();
         
-        if(registration.isEmpty() || name.isEmpty() || adress.isEmpty() || bloodtype.isEmpty())
-        {
-            viewAlunos.showError("Campos requeridos devem ser preenchidos");
+        if(registration.isEmpty() || name.isEmpty() || address.isEmpty() || bloodtype.isEmpty()) {
+            viewAlunos.showError("Todos os campos devem ser preenchidos");
             return null;
-        }
+        } else {
+            Alunos a = new Alunos(Integer.parseInt(registration), address, phone, bloodtype, name);
+            clearFields();
+            return a;
+        }    
         
-        try{
-            int r = Integer.parseInt(registration);
-            Alunos alunos = new Alunos(r, adress, phone, name);
-            
-            //if bloodtype have some value
-            if(!bloodtype.isEmpty())
-                alunos.setTipoSangue(bloodtype);
-            
-            return alunos;
-            
-        }
-        catch(NumberFormatException e)
-        {
-            viewAlunos.showError(e.getMessage());
-            return null;
-        }        
     }
     
+    public void clearFields(){
+        
+        viewAlunos.getInputMatricula().setText("");
+        viewAlunos.getInputMatricula().setText("");
+        viewAlunos.getInputNome().setText("");
+        viewAlunos.getInputTelefone().setText("");
+        viewAlunos.getInputTipoSanguineo().setText("");
+        viewAlunos.getInputEndereco().setText("");
+        
+    }
+
+    public void setViewAlunos(JFrameCadAlunos viewAlunos) {
+        this.viewAlunos = viewAlunos;
+    }
 }
