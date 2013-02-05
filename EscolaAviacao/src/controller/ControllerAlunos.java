@@ -71,6 +71,26 @@ public class ControllerAlunos {
         }
         
     }
+    
+    public void selectOne() {
+        
+        int index = viewAlunos.getjTable1().getSelectedRow();
+        if (index == -1)
+            return;
+        Alunos a = viewTabela.select(index);
+        viewAlunos.getInputMatricula().setText(Integer.toString(a.getMatricula()));
+        viewAlunos.getInputEndereco().setText(a.getEndereco());
+        viewAlunos.getInputTipoSanguineo().setText(a.getTipoSangue());
+        viewAlunos.getInputTelefone().setText(a.getTelefone());
+        viewAlunos.getInputNome().setText(a.getNome());
+        
+    }
+    
+    public void removeOne() {
+       
+        
+        
+    }
 
         
     //get all values form viewalunos
@@ -114,4 +134,6 @@ public class ControllerAlunos {
     public TableModelAlunos getViewTabela() {
         return viewTabela;
     }
+
+
 }
