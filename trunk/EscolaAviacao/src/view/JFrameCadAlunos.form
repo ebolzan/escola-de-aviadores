@@ -194,7 +194,7 @@
         <Component class="javax.swing.JButton" name="jButtonInserir">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icones/system_software_installer.png"/>
+              <Image iconType="3" name="/icones/Save.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Inserir"/>
           </Properties>
@@ -205,7 +205,7 @@
         <Component class="javax.swing.JButton" name="jButtonExcluir">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icones/software_update_urgent.png"/>
+              <Image iconType="3" name="/icones/Erase.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
@@ -216,7 +216,7 @@
         <Component class="javax.swing.JButton" name="jButtonLimparCampos">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icones/software_cd_2.png"/>
+              <Image iconType="3" name="/icones/Abort.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Limpar"/>
           </Properties>
@@ -227,7 +227,7 @@
         <Component class="javax.swing.JButton" name="jButtonEditar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icones/system_software_update.png"/>
+              <Image iconType="3" name="/icones/Modify.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
           </Properties>

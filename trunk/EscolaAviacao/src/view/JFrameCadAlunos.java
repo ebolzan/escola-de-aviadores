@@ -171,7 +171,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
             }
         });
 
-        jButtonInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/system_software_installer.png"))); // NOI18N
+        jButtonInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Save.png"))); // NOI18N
         jButtonInserir.setText("Inserir");
         jButtonInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +179,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
             }
         });
 
-        jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/software_update_urgent.png"))); // NOI18N
+        jButtonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Erase.png"))); // NOI18N
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +187,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
             }
         });
 
-        jButtonLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/software_cd_2.png"))); // NOI18N
+        jButtonLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Abort.png"))); // NOI18N
         jButtonLimparCampos.setText("Limpar");
         jButtonLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,7 +195,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
             }
         });
 
-        jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/system_software_update.png"))); // NOI18N
+        jButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Modify.png"))); // NOI18N
         jButtonEditar.setText("Editar");
         jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,7 +379,6 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jButtonInserir.setEnabled(false);
-        jButtonEditar.setEnabled(true);
         jButtonExcluir.setEnabled(true);    
         ca.selectOne();
     }//GEN-LAST:event_jTable1MouseClicked
@@ -400,6 +399,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMatriculaFocusGained
         inputMatricula.setBackground(Color.YELLOW);
+        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputMatriculaFocusGained
 
     private void inputMatriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMatriculaFocusLost
@@ -408,6 +408,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusGained
         inputNome.setBackground(Color.YELLOW);
+        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputNomeFocusGained
 
     private void inputNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusLost
@@ -416,6 +417,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusGained
         inputEndereco.setBackground(Color.YELLOW);
+        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputEnderecoFocusGained
 
     private void inputEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusLost
@@ -424,6 +426,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusGained
         inputTelefone.setBackground(Color.YELLOW);
+        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputTelefoneFocusGained
 
     private void inputTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusLost
@@ -436,6 +439,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputTipoSanguineoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTipoSanguineoFocusGained
         inputTipoSanguineo.setBackground(Color.YELLOW);
+        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputTipoSanguineoFocusGained
 
 
