@@ -6,7 +6,9 @@ package view;
 
 
 import controller.ControllerAlunos;
+import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -58,7 +60,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
     }
 
     public void setInputTelefone(JTextField inputTelefone) {
-        this.inputTelefone = inputTelefone;
+        this.inputTelefone = (JFormattedTextField) inputTelefone;
     }
 
     public JTextField getInputTipoSanguineo() {
@@ -100,12 +102,12 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
         inputMatricula = new javax.swing.JTextField();
         inputNome = new javax.swing.JTextField();
         inputEndereco = new javax.swing.JTextField();
-        inputTelefone = new javax.swing.JTextField();
         inputTipoSanguineo = new javax.swing.JTextField();
         jButtonInserir = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonLimparCampos = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
+        inputTelefone = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -132,6 +134,42 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
         jLabel4.setText("Telefone:");
 
         jLabel5.setText("Tipo Sanguíneo:");
+
+        inputMatricula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputMatriculaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputMatriculaFocusLost(evt);
+            }
+        });
+
+        inputNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputNomeFocusLost(evt);
+            }
+        });
+
+        inputEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputEnderecoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputEnderecoFocusLost(evt);
+            }
+        });
+
+        inputTipoSanguineo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputTipoSanguineoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputTipoSanguineoFocusLost(evt);
+            }
+        });
 
         jButtonInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/system_software_installer.png"))); // NOI18N
         jButtonInserir.setText("Inserir");
@@ -165,6 +203,20 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
             }
         });
 
+        try {
+            inputTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        inputTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inputTelefoneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                inputTelefoneFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,11 +242,11 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputTipoSanguineo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputMatricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(inputNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,8 +266,8 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
                     .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputTipoSanguineo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,11 +385,9 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseExited
-
     }//GEN-LAST:event_jTable1MouseExited
 
     private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
-
     }//GEN-LAST:event_jTable1MouseEntered
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
@@ -348,12 +398,52 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
         jButtonInserir.setEnabled(true);
     }//GEN-LAST:event_jButtonEditarActionPerformed
 
+    private void inputMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMatriculaFocusGained
+        inputMatricula.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputMatriculaFocusGained
+
+    private void inputMatriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMatriculaFocusLost
+        inputMatricula.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputMatriculaFocusLost
+
+    private void inputNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusGained
+        inputNome.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputNomeFocusGained
+
+    private void inputNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusLost
+        inputNome.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputNomeFocusLost
+
+    private void inputEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusGained
+        inputEndereco.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputEnderecoFocusGained
+
+    private void inputEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusLost
+        inputEndereco.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputEnderecoFocusLost
+
+    private void inputTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusGained
+        inputTelefone.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputTelefoneFocusGained
+
+    private void inputTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusLost
+         inputTelefone.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputTelefoneFocusLost
+
+    private void inputTipoSanguineoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTipoSanguineoFocusLost
+        inputTipoSanguineo.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputTipoSanguineoFocusLost
+
+    private void inputTipoSanguineoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTipoSanguineoFocusGained
+        inputTipoSanguineo.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputTipoSanguineoFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField inputEndereco;
     private javax.swing.JTextField inputMatricula;
     private javax.swing.JTextField inputNome;
-    private javax.swing.JTextField inputTelefone;
+    private javax.swing.JFormattedTextField inputTelefone;
     private javax.swing.JTextField inputTipoSanguineo;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonExcluir;
