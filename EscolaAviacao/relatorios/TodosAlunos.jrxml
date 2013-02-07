@@ -3,8 +3,8 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[select * from alunos]]>
+	<queryString>
+		<![CDATA[select * from alunos order by nome]]>
 	</queryString>
 	<field name="matricula" class="java.lang.Integer"/>
 	<field name="endereco" class="java.lang.String"/>
