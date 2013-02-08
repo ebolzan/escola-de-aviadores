@@ -104,6 +104,7 @@ public class ControllerAlunos {
         try {
             s.beginTransaction();
             s.merge(a);
+            s.getTransaction().commit();
             viewTabela.update(index, a);
         } catch (HibernateException e) {
             e.printStackTrace();

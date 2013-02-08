@@ -379,6 +379,7 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jButtonInserir.setEnabled(false);
+        jButtonEditar.setEnabled(true);
         jButtonExcluir.setEnabled(true);    
         ca.selectOne();
     }//GEN-LAST:event_jTable1MouseClicked
@@ -399,7 +400,6 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputMatriculaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMatriculaFocusGained
         inputMatricula.setBackground(Color.YELLOW);
-        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputMatriculaFocusGained
 
     private void inputMatriculaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMatriculaFocusLost
@@ -408,7 +408,6 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusGained
         inputNome.setBackground(Color.YELLOW);
-        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputNomeFocusGained
 
     private void inputNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusLost
@@ -417,7 +416,6 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusGained
         inputEndereco.setBackground(Color.YELLOW);
-        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputEnderecoFocusGained
 
     private void inputEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusLost
@@ -426,7 +424,6 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusGained
         inputTelefone.setBackground(Color.YELLOW);
-        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputTelefoneFocusGained
 
     private void inputTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusLost
@@ -439,7 +436,6 @@ public class JFrameCadAlunos extends javax.swing.JFrame {
 
     private void inputTipoSanguineoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTipoSanguineoFocusGained
         inputTipoSanguineo.setBackground(Color.YELLOW);
-        jButtonEditar.setEnabled(true);
     }//GEN-LAST:event_inputTipoSanguineoFocusGained
 
 
