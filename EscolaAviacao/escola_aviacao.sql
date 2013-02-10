@@ -2,51 +2,7 @@
 -- Sql ANSI 2003 - brModelo.
 
 --creating sequences
-
-
-  
-CREATE SEQUENCE id_cursos
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-  
-  CREATE SEQUENCE id_instituicoes
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-  
-CREATE SEQUENCE id_avioes
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-    
-  CREATE SEQUENCE id_aulas
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-  
-CREATE SEQUENCE id_clientes
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-  
-  CREATE SEQUENCE id_viagens
-  INCREMENT 1
-  MINVALUE 1
-  MAXVALUE 9223372036854775807
-  START 1
-  CACHE 1;
-  
+-- tirei pq tava dando pau
 --creating tables
 
 CREATE TABLE Instrutores (
@@ -55,13 +11,13 @@ breve integer not null,
 );
 
 CREATE TABLE Cursos (
-codigo integer not null DEFAULT nextval('id_cursos'::regclass),
+codigo integer not null,
 nome varchar(50) not null,
 PRIMARY KEY(codigo)
 );
 
 CREATE TABLE Instituicoes (
-codigo integer not null DEFAULT nextval('id_instituicoes'::regclass),
+codigo integer not null,
 cidade varchar(100) not null,
 estado varchar(100) not null,
 telefone varchar(50),
@@ -79,7 +35,7 @@ PRIMARY KEY(matricula)
 );
 
 CREATE TABLE Aulas (
-codigo integer not null DEFAULT nextval('id_aulas'::regclass),
+codigo integer not null,
 data date not null,
 hora_saida time not null,
 hora_chegada time not null,
@@ -92,7 +48,7 @@ FOREIGN KEY(breve) REFERENCES Instrutores (breve)
 );
 
 CREATE TABLE Avioes (
-codigo integer not null DEFAULT nextval('id_avioes'::regclass),
+codigo integer not null,
 marca varchar(50) not null,
 data_manut date not null,
 descricao varchar(150) not null,
@@ -101,7 +57,7 @@ PRIMARY KEY(codigo)
 );
 
 CREATE TABLE Clientes (
-codigo integer not null DEFAULT nextval('id_clientes'::regclass),
+codigo integer not null,
 nome varchar(50) not null,
 endereco varchar(100) not null,
 telefone varchar(50) not null,
@@ -109,7 +65,7 @@ telefone varchar(50) not null,
 );
 
 CREATE TABLE Viagens (
-codigo integer not null DEFAULT nextval('id_viagens'::regclass),
+codigo integer not null,
 data_saida date not null,
 data_chegada date not null,
 cidade_de varchar(100) not null,
