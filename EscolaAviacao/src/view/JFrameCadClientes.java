@@ -5,8 +5,7 @@
 package view;
 
 
-import com.toedter.calendar.JDateChooser;
-import controller.ControllerAvioes;
+import controller.ControllerClientes;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
@@ -19,15 +18,49 @@ import javax.swing.JTextField;
  *
  * @author evandro
  */
-public class JFrameCadAvioes extends javax.swing.JFrame {
+public class JFrameCadClientes extends javax.swing.JFrame {
 
-    private ControllerAvioes ca;
+    private ControllerClientes cc;
    
-    public JFrameCadAvioes(ControllerAvioes aviaoControle) {
+    public JFrameCadClientes(ControllerClientes clienteControle) {
         initComponents();
-        ca = aviaoControle;
-        ca.setViewAvioes(this);
-        jTable1.setModel(ca.getViewTabela());
+        cc = clienteControle;
+        cc.setViewClientes(this);
+        jTable1.setModel(cc.getViewTabela());
+    }
+
+
+
+    public JTextField getInputEndereco() {
+        return inputEndereco;
+    }
+
+    public void setInputEndereco(JTextField inputEndereco) {
+        this.inputEndereco = inputEndereco;
+    }
+
+    public JTextField getInputCodigo() {
+        return inputCodigo;
+    }
+
+    public void setInputCodigo(JTextField inputMatricula) {
+        this.inputCodigo = inputMatricula;
+    }
+
+    public JTextField getInputNome() {
+        return inputNome;
+    }
+
+    public void setInputNome(JTextField inputNome) {
+        this.inputNome = inputNome;
+    }
+
+    public JTextField getInputTelefone() {
+        return inputTelefone;
+    }
+
+    public void setInputTelefone(JTextField inputTelefone) {
+        this.inputTelefone = (JFormattedTextField) inputTelefone;
     }
 
     public JButton getjButton1() {
@@ -57,23 +90,21 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         inputCodigo = new javax.swing.JTextField();
-        inputMarca = new javax.swing.JTextField();
-        inputDescricao = new javax.swing.JTextField();
+        inputNome = new javax.swing.JTextField();
+        inputEndereco = new javax.swing.JTextField();
         jButtonInserir = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonLimparCampos = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
-        inputDataManut = new com.toedter.calendar.JDateChooser();
-        inputDataFab = new com.toedter.calendar.JDateChooser();
+        inputTelefone = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Aeronaves");
+        setTitle("Cadastro de Clientes");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -86,13 +117,11 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
 
         jLabel1.setText("Código:");
 
-        jLabel2.setText("Marca:");
+        jLabel2.setText("Nome:");
 
-        jLabel3.setText("Data Manu.:");
+        jLabel3.setText("Endereço:");
 
-        jLabel4.setText("Data Fab.:");
-
-        jLabel5.setText("Descrição:");
+        jLabel4.setText("Telefone:");
 
         inputCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -103,21 +132,21 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
             }
         });
 
-        inputMarca.addFocusListener(new java.awt.event.FocusAdapter() {
+        inputNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                inputMarcaFocusGained(evt);
+                inputNomeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                inputMarcaFocusLost(evt);
+                inputNomeFocusLost(evt);
             }
         });
 
-        inputDescricao.addFocusListener(new java.awt.event.FocusAdapter() {
+        inputEndereco.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                inputDescricaoFocusGained(evt);
+                inputEnderecoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                inputDescricaoFocusLost(evt);
+                inputEnderecoFocusLost(evt);
             }
         });
 
@@ -153,21 +182,17 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
             }
         });
 
-        inputDataManut.addFocusListener(new java.awt.event.FocusAdapter() {
+        try {
+            inputTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        inputTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                inputDataManutFocusGained(evt);
+                inputTelefoneFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                inputDataManutFocusLost(evt);
-            }
-        });
-
-        inputDataFab.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                inputDataFabFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                inputDataFabFocusLost(evt);
+                inputTelefoneFocusLost(evt);
             }
         });
 
@@ -188,21 +213,18 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(inputCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(inputDataFab, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addComponent(inputDataManut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(inputDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(inputNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,19 +236,15 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(inputMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(inputDataManut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(inputDataFab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel3)
+                    .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(inputTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonInserir)
@@ -239,16 +257,16 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel6.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        jLabel6.setText("Cadastro de Aeronaves");
+        jLabel6.setText("Cadastro de Clientes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(117, 117, 117))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,7 +317,7 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -307,12 +325,12 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirActionPerformed
-        ca.save(); //controle de avioes
+        cc.save(); //controle de alunos
     }//GEN-LAST:event_jButtonInserirActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        ca.removeOne();
-        ca.clearFields();
+        cc.removeOne();
+        cc.clearFields();
         jButtonEditar.setEnabled(false);
         jButtonExcluir.setEnabled(false);
         jButtonInserir.setEnabled(true);
@@ -321,11 +339,11 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         jButtonEditar.setEnabled(false);
         jButtonExcluir.setEnabled(false);
-        ca.selectAll();
+        cc.selectAll();
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparCamposActionPerformed
-        ca.clearFields();
+        cc.clearFields();
         jButtonEditar.setEnabled(false);
         jButtonExcluir.setEnabled(false);
         jButtonInserir.setEnabled(true);
@@ -336,7 +354,7 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
         jButtonInserir.setEnabled(false);
         jButtonEditar.setEnabled(true);
         jButtonExcluir.setEnabled(true);    
-        ca.selectOne();
+        cc.selectOne();
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseExited
@@ -346,8 +364,8 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseEntered
 
     private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
-        ca.edit();
-        ca.clearFields();
+        cc.edit();
+        cc.clearFields();
         jButtonEditar.setEnabled(false);
         jButtonExcluir.setEnabled(false);
         jButtonInserir.setEnabled(true);
@@ -361,45 +379,36 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
         inputCodigo.setBackground(Color.WHITE);
     }//GEN-LAST:event_inputCodigoFocusLost
 
-    private void inputMarcaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMarcaFocusGained
-        inputMarca.setBackground(Color.YELLOW);
-    }//GEN-LAST:event_inputMarcaFocusGained
+    private void inputNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusGained
+        inputNome.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputNomeFocusGained
 
-    private void inputMarcaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputMarcaFocusLost
-        inputMarca.setBackground(Color.WHITE);
-    }//GEN-LAST:event_inputMarcaFocusLost
+    private void inputNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputNomeFocusLost
+        inputNome.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputNomeFocusLost
 
-    private void inputDescricaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDescricaoFocusLost
-        inputDescricao.setBackground(Color.WHITE);
-    }//GEN-LAST:event_inputDescricaoFocusLost
+    private void inputEnderecoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusGained
+        inputEndereco.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputEnderecoFocusGained
 
-    private void inputDescricaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDescricaoFocusGained
-        inputDescricao.setBackground(Color.YELLOW);
-    }//GEN-LAST:event_inputDescricaoFocusGained
+    private void inputEnderecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputEnderecoFocusLost
+        inputEndereco.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputEnderecoFocusLost
 
-    private void inputDataManutFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDataManutFocusGained
-        inputDataManut.setBackground(Color.YELLOW);
-    }//GEN-LAST:event_inputDataManutFocusGained
+    private void inputTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusGained
+        inputTelefone.setBackground(Color.YELLOW);
+    }//GEN-LAST:event_inputTelefoneFocusGained
 
-    private void inputDataManutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDataManutFocusLost
-        inputDataManut.setBackground(Color.WHITE);
-    }//GEN-LAST:event_inputDataManutFocusLost
-
-    private void inputDataFabFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDataFabFocusGained
-        inputDataFab.setBackground(Color.YELLOW);
-    }//GEN-LAST:event_inputDataFabFocusGained
-
-    private void inputDataFabFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputDataFabFocusLost
-        inputDataFab.setBackground(Color.WHITE);
-    }//GEN-LAST:event_inputDataFabFocusLost
+    private void inputTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inputTelefoneFocusLost
+         inputTelefone.setBackground(Color.WHITE);
+    }//GEN-LAST:event_inputTelefoneFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField inputCodigo;
-    private com.toedter.calendar.JDateChooser inputDataFab;
-    private com.toedter.calendar.JDateChooser inputDataManut;
-    private javax.swing.JTextField inputDescricao;
-    private javax.swing.JTextField inputMarca;
+    private javax.swing.JTextField inputEndereco;
+    private javax.swing.JTextField inputNome;
+    private javax.swing.JFormattedTextField inputTelefone;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonInserir;
@@ -408,53 +417,12 @@ public class JFrameCadAvioes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
-    public void setInputCodigo(JTextField inputCodigo) {
-        this.inputCodigo = inputCodigo;
-    }
-
-    public void setInputDataFab(JDateChooser inputDataFab) {
-        this.inputDataFab = inputDataFab;
-    }
-
-    public void setInputDataManut(JDateChooser inputDataManut) {
-        this.inputDataManut = inputDataManut;
-    }
-
-    public void setInputDescricao(JTextField inputDescricao) {
-        this.inputDescricao = inputDescricao;
-    }
-
-    public void setInputMarca(JTextField inputMarca) {
-        this.inputMarca = inputMarca;
-    }
-
-    public JTextField getInputCodigo() {
-        return inputCodigo;
-    }
-
-    public JDateChooser getInputDataFab() {
-        return inputDataFab;
-    }
-
-    public JDateChooser getInputDataManut() {
-        return inputDataManut;
-    }
-
-    public JTextField getInputDescricao() {
-        return inputDescricao;
-    }
-
-    public JTextField getInputMarca() {
-        return inputMarca;
-    }
 
     public JTable getjTable1() {
         return jTable1;

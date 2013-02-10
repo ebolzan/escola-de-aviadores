@@ -8,6 +8,7 @@ import Reports.Conexao;
 import Reports.ReportUtils;
 import controller.ControllerAlunos;
 import controller.ControllerAvioes;
+import controller.ControllerClientes;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -18,6 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import model.TableModelAlunos;
 import model.TableModelAvioes;
+import model.TableModelClientes;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -28,15 +30,19 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private ControllerAlunos alunoControle;
     private ControllerAvioes aviaoControle;
+    private ControllerClientes clienteControle;
     private TableModelAlunos viewTabelaAluno;
     private TableModelAvioes viewTabelaAviao;
+    private TableModelClientes viewTabelaCliente;
     
     public JFramePrincipal() {
         initComponents();
         viewTabelaAluno = new TableModelAlunos();
         viewTabelaAviao = new TableModelAvioes();
+        viewTabelaCliente = new TableModelClientes();
         alunoControle = new ControllerAlunos(null,viewTabelaAluno);
         aviaoControle = new ControllerAvioes(null, viewTabelaAviao);
+        clienteControle = new ControllerClientes(null, viewTabelaCliente);
     }
 
     /**
@@ -180,6 +186,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Boss.png"))); // NOI18N
         jMenuItem4.setText("Clientes");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
@@ -278,6 +289,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
             er.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        JFrameCadClientes cadClientes = new JFrameCadClientes(clienteControle);
+        clienteControle.setViewClientes(cadClientes);
+        cadClientes.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
