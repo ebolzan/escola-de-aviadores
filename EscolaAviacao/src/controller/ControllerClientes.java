@@ -23,7 +23,6 @@ public class ControllerClientes {
     
     private JFrameCadClientes viewClientes;
     private TableModelClientes viewTabela;
-    private Clientes alunos;
     
     public ControllerClientes (JFrameCadClientes viewClientes, TableModelClientes t) {
         this.viewClientes = viewClientes;        
@@ -134,18 +133,17 @@ public class ControllerClientes {
     //get all values form viewalunos
     private Clientes newFromView() {
         
-        int cod;
-        String name, address, phone, bloodtype; 
-        cod = Integer.parseInt((viewClientes.getInputCodigo()).getText());
+        String cod, name, address, phone; 
+        cod = viewClientes.getInputCodigo().getText();
         name = viewClientes.getInputNome().getText();
         address = viewClientes.getInputEndereco().getText();
         phone = viewClientes.getInputTelefone().getText();
         
-        if(name.isEmpty() || address.isEmpty() || phone.isEmpty()) {
+        if(name.isEmpty() || address.isEmpty() || phone.isEmpty() || cod.isEmpty()) {
             viewClientes.showError("Todos os campos devem ser preenchidos");
             return null;
         } else {
-            Clientes a = new Clientes(cod, name, address, phone);
+            Clientes a = new Clientes(Integer.parseInt(cod), name, address, phone);
             clearFields();
             return a;
         }    

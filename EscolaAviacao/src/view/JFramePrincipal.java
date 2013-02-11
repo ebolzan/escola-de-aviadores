@@ -9,6 +9,7 @@ import Reports.ReportUtils;
 import controller.ControllerAlunos;
 import controller.ControllerAvioes;
 import controller.ControllerClientes;
+import controller.ControllerPilotos;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ import java.util.TimerTask;
 import model.TableModelAlunos;
 import model.TableModelAvioes;
 import model.TableModelClientes;
+import model.TableModelPilotos;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -31,18 +33,24 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private ControllerAlunos alunoControle;
     private ControllerAvioes aviaoControle;
     private ControllerClientes clienteControle;
+    private ControllerPilotos pilotoControle;
+    
     private TableModelAlunos viewTabelaAluno;
     private TableModelAvioes viewTabelaAviao;
     private TableModelClientes viewTabelaCliente;
+    private TableModelPilotos viewTabelaPiloto;
+    
     
     public JFramePrincipal() {
         initComponents();
         viewTabelaAluno = new TableModelAlunos();
         viewTabelaAviao = new TableModelAvioes();
         viewTabelaCliente = new TableModelClientes();
+        viewTabelaPiloto = new TableModelPilotos();
         alunoControle = new ControllerAlunos(null,viewTabelaAluno);
         aviaoControle = new ControllerAvioes(null, viewTabelaAviao);
         clienteControle = new ControllerClientes(null, viewTabelaCliente);
+        pilotoControle = new ControllerPilotos(null, viewTabelaPiloto);
     }
 
     /**
@@ -59,6 +67,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -105,19 +115,41 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/images.jpg"))); // NOI18N
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 0, 0));
+        jLabel4.setText("Adriano Canofre, Evandro Bolzan, Gabriel Lunardi e Luiz Felipe");
+
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel5.setText("Grupo 4");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(288, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(332, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(273, 273, 273)
+                                .addComponent(jLabel5)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(122, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
@@ -196,6 +228,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Person.png"))); // NOI18N
         jMenuItem5.setText("Pilotos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
         jMenu2.add(jSeparator1);
 
@@ -296,11 +333,19 @@ public class JFramePrincipal extends javax.swing.JFrame {
         cadClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        JFrameCadPilotos cadPilotos = new JFrameCadPilotos(pilotoControle);
+        pilotoControle.setViewPilotos(cadPilotos);
+        cadPilotos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
