@@ -23,7 +23,6 @@ public class ControllerAlunos {
     
     private JFrameCadAlunos viewAlunos;
     private TableModelAlunos viewTabela;
-    private Alunos alunos;
     
     public ControllerAlunos(JFrameCadAlunos viewAlunos, TableModelAlunos t) {
         this.viewAlunos = viewAlunos;        

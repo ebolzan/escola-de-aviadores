@@ -5,6 +5,9 @@
 package controller;
 
 import Util.HibernateUtil;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale.Category;
@@ -14,7 +17,7 @@ import model.TableModelAvioes;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
-import view.JFrameCadAlunos;
+import sun.security.jca.GetInstance;
 import view.JFrameCadAvioes;
 
 /**
@@ -25,7 +28,6 @@ public class ControllerAvioes {
     
     private JFrameCadAvioes viewAvioes;
     private TableModelAvioes viewTabela;
-    private Avioes alunos;
     
     public ControllerAvioes(JFrameCadAvioes viewAvioes, TableModelAvioes t) {
         this.viewAvioes = viewAvioes;        
@@ -137,23 +139,27 @@ public class ControllerAvioes {
     //get all values form viewalunos
     private Avioes newFromView() {
         
-        String codigo, marca, descricao; 
-        Date dataFab, dataManu;
-        codigo = viewAvioes.getInputCodigo().getText();
-        marca = viewAvioes.getInputMarca().getText();
-        dataFab = viewAvioes.getInputDataFab().getDate();
-        dataManu = viewAvioes.getInputDataManut().getDate();
-        descricao = viewAvioes.getInputDescricao().getText();
-        
-        if(codigo.isEmpty() || marca.isEmpty() || dataFab.toString().isEmpty() || descricao.isEmpty() || dataManu.toString().isEmpty()) {
-            viewAvioes.showError("Todos os campos devem ser preenchidos");
-            return null;
-        } else {
-            Avioes a = new Avioes(Integer.parseInt(codigo), marca, dataManu, descricao, dataFab);
-            clearFields();
-            return a;
-        }    
-        
+            Date dataFab, dataManu;
+            String codigo, marca, descricao;
+
+            codigo = viewAvioes.getInputCodigo().getText();
+            marca = viewAvioes.getInputMarca().getText();
+            dataFab = viewAvioes.getInputDataFab().getDate();
+            dataManu = viewAvioes.getInputDataManut().getDate();
+            descricao = viewAvioes.getInputDescricao().getText();
+
+            if (codigo.isEmpty() || marca.isEmpty() || dataFab == null || descricao.isEmpty() || dataManu == null) {
+                viewAvioes.showError("Todos os campos devem ser preenchidos");
+                return null;
+            } else {
+
+                Avioes a = new Avioes(Integer.parseInt(codigo), marca, dataManu, descricao, dataFab);
+                clearFields();
+                return a;
+
+            }
+
+
     }
     
     public void clearFields(){
