@@ -71,6 +71,10 @@ public class Clientes  implements java.io.Serializable {
         this.viagenses = viagenses;
     }
 
+    @Override
+    public String toString(){
+        return codigo + " - " + nome;
+    }
 
 
 

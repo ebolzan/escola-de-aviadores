@@ -91,7 +91,10 @@ public class Avioes  implements java.io.Serializable {
         this.aulases = aulases;
     }
 
-
+    @Override
+    public String toString(){
+        return codigo + " - " + marca + " - " + descricao;
+    }
 
 
 }
