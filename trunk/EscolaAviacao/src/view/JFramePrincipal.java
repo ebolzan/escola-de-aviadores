@@ -10,6 +10,7 @@ import controller.ControllerAlunos;
 import controller.ControllerAvioes;
 import controller.ControllerClientes;
 import controller.ControllerPilotos;
+import controller.ControllerViagens;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import model.TableModelAlunos;
 import model.TableModelAvioes;
 import model.TableModelClientes;
 import model.TableModelPilotos;
+import model.TableModelViagens;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -34,11 +36,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private ControllerAvioes aviaoControle;
     private ControllerClientes clienteControle;
     private ControllerPilotos pilotoControle;
+    private ControllerViagens viagemControle;
     
     private TableModelAlunos viewTabelaAluno;
     private TableModelAvioes viewTabelaAviao;
     private TableModelClientes viewTabelaCliente;
     private TableModelPilotos viewTabelaPiloto;
+    private TableModelViagens viewTabelaViagem;
     
     
     public JFramePrincipal() {
@@ -47,10 +51,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
         viewTabelaAviao = new TableModelAvioes();
         viewTabelaCliente = new TableModelClientes();
         viewTabelaPiloto = new TableModelPilotos();
+        viewTabelaViagem = new TableModelViagens();
+        
         alunoControle = new ControllerAlunos(null,viewTabelaAluno);
         aviaoControle = new ControllerAvioes(null, viewTabelaAviao);
         clienteControle = new ControllerClientes(null, viewTabelaCliente);
         pilotoControle = new ControllerPilotos(null, viewTabelaPiloto);
+        viagemControle = new ControllerViagens(null, viewTabelaViagem);
     }
 
     /**
@@ -115,7 +122,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/images.jpg"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 0, 0));
         jLabel4.setText("Adriano Canofre, Evandro Bolzan, Gabriel Lunardi e Luiz Felipe");
 
@@ -132,15 +139,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
                         .addContainerGap(332, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(273, 273, 273)
-                                .addComponent(jLabel5)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(273, 273, 273)
+                        .addComponent(jLabel5)
+                        .addGap(0, 278, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +190,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -239,6 +245,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Dollar.png"))); // NOI18N
         jMenuItem6.setText("Viagens");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
@@ -338,6 +349,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
         pilotoControle.setViewPilotos(cadPilotos);
         cadPilotos.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        JFrameCadViagens cadViagens = new JFrameCadViagens(viagemControle, aviaoControle, clienteControle);
+        viagemControle.setViewViagens(cadViagens);
+        cadViagens.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
