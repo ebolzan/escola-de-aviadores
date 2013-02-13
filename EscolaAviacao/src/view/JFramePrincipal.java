@@ -96,7 +96,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema gerenciador de Aeroclubes AEGL - T2 PGBDADOS 2013/1");
+        setTitle("Sistema gerenciador de Aeroclubes DELTA - T2 PGBDADOS 2012/2");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
