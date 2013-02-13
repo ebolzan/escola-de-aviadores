@@ -66,8 +66,8 @@ public class TableModelViagens extends AbstractTableModel {
             case 3: return linesJTable.get(rowIndex).getCidadeDe();
             case 4: return linesJTable.get(rowIndex).getCidadeAte();
             case 5: return linesJTable.get(rowIndex).getValor();
-            case 6: return linesJTable.get(rowIndex).getAvioes().getCodigo();
-            case 7: return linesJTable.get(rowIndex).getClientes().getCodigo(); 
+            case 6: return linesJTable.get(rowIndex).getAvioes();
+            case 7: return linesJTable.get(rowIndex).getClientes(); 
         }
         return null;
     }

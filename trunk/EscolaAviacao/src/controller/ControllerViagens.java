@@ -135,8 +135,8 @@ public class ControllerViagens {
         viewViagens.getInputCidadeOrigem().setText(v.getCidadeDe());
         viewViagens.getInputCidadeDestino().setText(v.getCidadeAte());
         viewViagens.getInputValor().setText(String.valueOf(v.getValor()));
-        viewViagens.getComboBoxAviao().setSelectedItem(v.getAvioes().toString());
-        viewViagens.getComboBoxCliente().setSelectedItem(v.getClientes().toString());
+        viewViagens.getComboBoxAviao().setSelectedItem(v.getAvioes());
+        viewViagens.getComboBoxCliente().setSelectedItem(v.getClientes());
     }
 
         
@@ -199,10 +199,10 @@ public class ControllerViagens {
             List<Clientes> clist = cc.list();
             List<Avioes> alist = ca.list();
             for (Clientes c : clist){
-                viewViagens.getComboBoxCliente().addItem(c.toString());
+                viewViagens.getComboBoxCliente().addItem(c);
             }
             for (Avioes a : alist){
-                viewViagens.getComboBoxAviao().addItem(a.toString());
+                viewViagens.getComboBoxAviao().addItem(a);
             }
         } catch (HibernateException e){
             e.printStackTrace();
