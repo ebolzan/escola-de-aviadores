@@ -4,12 +4,18 @@
  */
 package controller;
 
+import Reports.Conexao;
+import Reports.ReportUtils;
 import Util.HibernateUtil;
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale.Category;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Alunos;
 import model.TableModelAlunos;
+import net.sf.jasperreports.engine.JRException;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
@@ -160,6 +166,18 @@ public class ControllerAlunos {
         viewAlunos.getInputTelefone().setText("");
         viewAlunos.getInputTipoSanguineo().setText("");
         viewAlunos.getInputEndereco().setText("");
+        
+    }
+    
+    public void generateReportAllLearners(){
+        
+        InputStream inputStream = getClass().getResourceAsStream( "/TodosAlunos.jasper" );
+        Map parametros = new HashMap();
+        try {
+            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
+        } catch (JRException er){
+            er.printStackTrace();
+        }
         
     }
 
