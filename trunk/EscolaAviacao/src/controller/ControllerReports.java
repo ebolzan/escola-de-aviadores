@@ -79,5 +79,17 @@ public class ControllerReports {
         }
         
     }
+
+    public void generateReportAvioesJaViajaram() {
+        
+        InputStream inputStream = getClass().getResourceAsStream( "/AvioesJaFizeramViagem.jasper" );
+        Map parametros = new HashMap();
+        try {
+            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
+        } catch (JRException er){
+            er.printStackTrace();
+        }
+        
+    }
     
 }
