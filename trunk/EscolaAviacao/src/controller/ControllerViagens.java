@@ -226,32 +226,5 @@ public class ControllerViagens {
     public TableModelViagens getViewTabela() {
         return viewTabela;
     }
-
-    public void generateReportViagensAirBusPlanes() {
-       
-        InputStream inputStream = getClass().getResourceAsStream( "/ClientesViajaram-AvioesAirBus.jasper" );
-        Map parametros = new HashMap();
-        try {
-            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
-        } catch (JRException er){
-            er.printStackTrace();
-        }
-        
-    }
-
-    public void generateReportViagensStaMariaOrPoA() {
-        
-        InputStream inputStream = getClass().getResourceAsStream( "/Destinos-StaMariaOrPoA.jasper" );
-        Map parametros = new HashMap();
-        try {
-            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
-        } catch (JRException er){
-            er.printStackTrace();
-        }
-        
-    }
-
-
-
-
+    
 }
