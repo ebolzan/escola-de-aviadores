@@ -169,19 +169,6 @@ public class ControllerAlunos {
         
     }
     
-    public void generateReportAllLearners(){
-        
-        InputStream inputStream = getClass().getResourceAsStream( "/TodosAlunos.jasper" );
-        Map parametros = new HashMap();
-        try {
-            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
-        } catch (JRException er){
-            er.printStackTrace();
-        }
-        
-    }
-
-    
     //getters and setters
     public void setViewAlunos(JFrameCadAlunos viewAlunos) {
         this.viewAlunos = viewAlunos;

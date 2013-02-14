@@ -4,11 +4,11 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT marca, min(ano_fab) as data_fabricacao FROM avioes
-GROUP BY marca HAVING min(ano_fab) = min(ano_fab)]]>
+		<![CDATA[(SELECT codigo FROM avioes WHERE data_manut BETWEEN '2013-01-01' AND '2013-01-31')
+UNION
+(SELECT codigo_avioes FROM viagens WHERE data_saida BETWEEN '2013-01-15' AND '2013-02-10');]]>
 	</queryString>
-	<field name="marca" class="java.lang.String"/>
-	<field name="data_fabricacao" class="java.sql.Date"/>
+	<field name="codigo" class="java.lang.Integer"/>
 	<background>
 		<band/>
 	</background>
@@ -19,9 +19,9 @@ GROUP BY marca HAVING min(ano_fab) = min(ano_fab)]]>
 				<staticText>
 					<reportElement uuid="c8971e03-a1f0-4d24-b98d-4347062e5838" x="20" y="20" width="802" height="43" forecolor="#FFFFFF"/>
 					<textElement>
-						<font size="26" isBold="true"/>
+						<font size="22" isBold="true"/>
 					</textElement>
-					<text><![CDATA[Data de fabricação do avião mais antigo de cada marca]]></text>
+					<text><![CDATA[código aviões realizaram Manut em Jan 2013 ou viagens entre 15/01 e 10/02]]></text>
 				</staticText>
 				<staticText>
 					<reportElement uuid="d3d63b50-356e-45d1-8fc1-a68d30023146" x="642" y="63" width="180" height="20" forecolor="#FFFFFF"/>
@@ -42,18 +42,11 @@ GROUP BY marca HAVING min(ano_fab) = min(ano_fab)]]>
 				<reportElement uuid="ae7fb9d9-0abd-41bc-9c70-ebbf05392671" x="-20" y="20" width="842" height="1" forecolor="#666666"/>
 			</line>
 			<staticText>
-				<reportElement uuid="65c794ae-069d-4c45-87e1-b69e54de0f47" mode="Opaque" x="0" y="0" width="490" height="20" forecolor="#CC0000" backcolor="#E6E6E6"/>
+				<reportElement uuid="02035b42-107a-403b-be90-402418d6ee9c" mode="Opaque" x="0" y="0" width="286" height="20" forecolor="#CC0000" backcolor="#E6E6E6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Marca]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="16a1d84f-d085-4d2b-a85b-47de49fc538d" mode="Opaque" x="490" y="0" width="312" height="20" forecolor="#CC0000" backcolor="#E6E6E6"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Data de Fabricação]]></text>
+				<text><![CDATA[Código]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -63,18 +56,11 @@ GROUP BY marca HAVING min(ano_fab) = min(ano_fab)]]>
 				<reportElement uuid="3af5598c-8986-4ed0-9d72-e3fc7bbf1c21" positionType="FixRelativeToBottom" x="0" y="19" width="802" height="1"/>
 			</line>
 			<textField>
-				<reportElement uuid="e177f72d-aa9e-43aa-95bd-47e5277cd73d" x="0" y="0" width="490" height="20"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement uuid="b6b4a24b-8312-4656-be5d-af16476817aa" x="0" y="0" width="286" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="7c4b4d5a-987e-4e68-8285-acd6ea586002" x="490" y="0" width="312" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{data_fabricacao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

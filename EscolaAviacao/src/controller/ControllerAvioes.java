@@ -188,19 +188,5 @@ public class ControllerAvioes {
         return viewTabela;
     }
 
-    public void generateReportMaisAntigosbyMarca() {
-        
-        InputStream inputStream = getClass().getResourceAsStream( "/AviaoMaisAntigoCadaMarca.jasper" );
-        Map parametros = new HashMap();
-        try {
-            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
-        } catch (JRException er){
-            er.printStackTrace();
-        }
-        
-    }
-
-
-
 
 }

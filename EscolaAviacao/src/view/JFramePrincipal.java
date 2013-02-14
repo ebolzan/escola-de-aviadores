@@ -10,6 +10,7 @@ import controller.ControllerAlunos;
 import controller.ControllerAvioes;
 import controller.ControllerClientes;
 import controller.ControllerPilotos;
+import controller.ControllerReports;
 import controller.ControllerViagens;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -37,6 +38,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private ControllerClientes clienteControle;
     private ControllerPilotos pilotoControle;
     private ControllerViagens viagemControle;
+    private ControllerReports relatoriosControle;
     
     private TableModelAlunos viewTabelaAluno;
     private TableModelAvioes viewTabelaAviao;
@@ -58,6 +60,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
         clienteControle = new ControllerClientes(null, viewTabelaCliente);
         pilotoControle = new ControllerPilotos(null, viewTabelaPiloto);
         viagemControle = new ControllerViagens(null, viewTabelaViagem);
+        
+        relatoriosControle = new ControllerReports();
     }
 
     /**
@@ -93,6 +97,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -283,6 +288,15 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem9);
 
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Report.png"))); // NOI18N
+        jMenuItem10.setText("Aviões Manut em Janeiro 2013 ou fizeram viagens entre");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem10);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Sobre");
@@ -322,7 +336,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        alunoControle.generateReportAllLearners();
+        relatoriosControle.generateReportAllLearners();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -359,16 +373,20 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        viagemControle.generateReportViagensAirBusPlanes();
+        relatoriosControle.generateReportViagensAirBusPlanes();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        viagemControle.generateReportViagensStaMariaOrPoA();
+        relatoriosControle.generateReportViagensStaMariaOrPoA();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        aviaoControle.generateReportMaisAntigosbyMarca();
+        relatoriosControle.generateReportMaisAntigosbyMarca();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        relatoriosControle.generateReportAvioesManutJanViagemEntre();
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -382,6 +400,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
