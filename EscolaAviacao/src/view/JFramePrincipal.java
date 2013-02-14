@@ -71,7 +71,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -91,6 +90,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -105,18 +105,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
 
         jToolBar1.setRollover(true);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Report.png"))); // NOI18N
-        jButton1.setToolTipText("Relatório de Todos os Alunos ordenados por nome");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton1);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -265,6 +253,15 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem3);
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/Text.png"))); // NOI18N
+        jMenuItem7.setText("Clientes que usaram aviões AirBus");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem7);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Sobre");
@@ -304,13 +301,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        InputStream inputStream = getClass().getResourceAsStream( "/TodosAlunos.jasper" );
-        Map parametros = new HashMap();
-        try {
-            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
-        } catch (JRException er){
-            er.printStackTrace();
-        }
+        alunoControle.generateReportAllLearners();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -327,16 +318,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         };  
         timer.schedule(task, 1000, 1000); 
     }//GEN-LAST:event_formWindowActivated
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        InputStream inputStream = getClass().getResourceAsStream( "/TodosAlunos.jasper" );
-        Map parametros = new HashMap();
-        try {
-            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
-        } catch (JRException er){
-            er.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         JFrameCadClientes cadClientes = new JFrameCadClientes(clienteControle);
@@ -356,8 +337,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         cadViagens.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        viagemControle.generateReportViagensAirBusPlanes();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -374,6 +358,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
