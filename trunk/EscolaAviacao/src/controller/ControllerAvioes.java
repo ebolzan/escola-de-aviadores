@@ -4,16 +4,22 @@
  */
 package controller;
 
+import Reports.Conexao;
+import Reports.ReportUtils;
 import Util.HibernateUtil;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale.Category;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import model.Avioes;
 import model.TableModelAvioes;
+import net.sf.jasperreports.engine.JRException;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
@@ -180,6 +186,18 @@ public class ControllerAvioes {
     
     public TableModelAvioes getViewTabela() {
         return viewTabela;
+    }
+
+    public void generateReportMaisAntigosbyMarca() {
+        
+        InputStream inputStream = getClass().getResourceAsStream( "/AviaoMaisAntigoCadaMarca.jasper" );
+        Map parametros = new HashMap();
+        try {
+            ReportUtils.openReport("Todos os alunos cadastrados", inputStream, parametros, Conexao.abrir());
+        } catch (JRException er){
+            er.printStackTrace();
+        }
+        
     }
 
 
